@@ -23,3 +23,8 @@ The current wardrive.sh script assumes you are using option 2.
 
 After you've donwloaded and setup the app. Connect your Android phone to the Pineapple via the management Wi-Fi.
 Then run the script wardrive.sh
+
+
+# Evil Portals
+
+The folder of Evils Portals is pulled from here https://github.com/kleo/evilportals
