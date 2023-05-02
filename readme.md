@@ -27,4 +27,4 @@ Then run the script wardrive.sh
 
 # Evil Portals
 
-The folder of Evils Portals is pulled from here https://github.com/kleo/evilportals
+The folder of Evils Portals is pulled from here https://github.com/kleo/evilportals & https://github.com/wifiphisher/extra-phishing-pages 
