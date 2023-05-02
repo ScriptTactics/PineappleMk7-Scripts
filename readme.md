@@ -1,5 +1,7 @@
 # Mk7 Wardriving
 
+This repository is a work in progress. Check back regularly for updates
+
 # Kismet setup
 After running the `dependencyInstall.sh` you will need to modify the kisment.conf file in `/etc/kismet/kismet.conf`
 
