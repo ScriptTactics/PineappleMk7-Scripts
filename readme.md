@@ -30,3 +30,12 @@ Then run the script wardrive.sh
 # Evil Portals
 
 The folder of Evils Portals is pulled from here https://github.com/kleo/evilportals & https://github.com/wifiphisher/extra-phishing-pages 
+
+In order to setup the Evil Portal on the Wifi Pineapple you must do the following.
+
+1. Install the Evil Portal Plugin.
+2. scp or sftp into the wifi pineapple and copy everything in the Evil Portals/portals directory into ~/portals onto the pineapple.
+3. Reload the Evil Portals module.
+4. Activate a portal you wish to use.
+5. Click Start Web Server, and then start.
+6. Then clone an AP or create your own AP
