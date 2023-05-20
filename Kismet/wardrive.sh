@@ -1,4 +1,3 @@
-```bash
 #!/bin/bash
 
 pkill gpsd # kill any current gpsd process
