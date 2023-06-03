@@ -6,7 +6,7 @@ ifconfig wlan1 down # bring down wlan1
 ifconfig wlan2 down # bring down wlan2
 #ifconfig wlan3 down # if you have the 5GHz module oncomment this line
 
-gpsd udp://172.16.42.1:9999 # Set the GPSD input from the android phone
+gpsd -n /dev/ttyACM0 # Set the GPSD input from USB Device
 
 sleep 1 # wait for a lock
 #gpspipe -w | grep -qm 1 '"mode":3'
